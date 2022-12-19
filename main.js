@@ -22,34 +22,18 @@ function main() {
         x: 0,
         y: 0
     }
-    let boxScale = 1
     
     window.addEventListener('mousemove', (e)=> {
         mousePos.x = e.clientX - 50
         mousePos.y = e.clientY - 50
     }) 
-    let incrementScale
-    
-    function start() {
-        incrementScale = setInterval(()=> {
-            boxScale = boxScale + 0.01
-        }, 20)
-    }
-    function stop (){
-        clearInterval(incrementScale)
-        boxScale = 1
-        console.log(boxScale);
-    }
-    
-    window.onmousedown = start
-    window.onmouseup = stop
-    
+ 
     function moveBox(){
         
         let easing = easeInOutQuad(0, 0.1, 0.1, 1)
     
         boxPos.x = lerp(boxPos.x, mousePos.x, easing )
-        boxPos.y = lerp(boxPos.y, mousePos.y,easing)
+        boxPos.y = lerp(boxPos.y, mousePos.y, easing)
     
         let a = mousePos.x - boxPos.x
         let b = mousePos.y - boxPos.y
